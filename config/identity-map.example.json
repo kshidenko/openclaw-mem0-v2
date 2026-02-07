@@ -1,0 +1,13 @@
+{
+  "identities": [
+    {
+      "canonical": "alice",
+      "aliases": [
+        "telegram:dm:123456",
+        "discord:user_789",
+        "session:abc12345"
+      ],
+      "label": "Alice (owner)"
+    }
+  ]
+}

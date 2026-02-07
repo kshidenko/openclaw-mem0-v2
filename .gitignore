@@ -1,0 +1,13 @@
+node_modules/
+package-lock.json
+*.db
+
+# Memory data (user-specific)
+memory/
+migration-backup/
+
+# Config with secrets
+config/identity-map.json
+
+# OS
+.DS_Store
