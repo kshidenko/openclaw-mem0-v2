@@ -1,7 +1,7 @@
 # OpenClaw Mem0 v2 — Enhanced Long-Term Memory
 
 Enhanced memory plugin for [OpenClaw](https://openclaw.ai) based on [Mem0](https://mem0.ai). Builds on the [official Mem0 plugin](https://github.com/mem0ai/mem0/tree/main/openclaw) with additional features for power users.
-
+# Features: ATTN Project currently under dvelopment and bugs are expected. feel free to submit bug reports
 ## Features
 
 | Feature | Official Plugin | This Plugin |
