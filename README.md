@@ -1,7 +1,27 @@
 # OpenClaw Mem0 v2 — Enhanced Long-Term Memory
 
 Enhanced memory plugin for [OpenClaw](https://openclaw.ai) based on [Mem0](https://mem0.ai). Builds on the [official Mem0 plugin](https://github.com/mem0ai/mem0/tree/main/openclaw) with additional features for power users.
-# Features: ATTN Project currently under dvelopment and bugs are expected. feel free to submit bug reports
+
+> **Status:** Project is under active development. Bugs are expected - please submit bug reports.
+
+## Attribution and Non-Affiliation Notice
+
+This repository is an independent community project and is **not** owned by,
+maintained by, or officially affiliated with OpenClaw or Mem0.
+
+- OpenClaw project: https://openclaw.ai
+- Mem0 project: https://mem0.ai
+- Official Mem0 OpenClaw plugin:
+  https://github.com/mem0ai/mem0/tree/main/openclaw
+
+Full respect and credit go to the original owners and maintainers of OpenClaw
+and Mem0 for their work.
+
+This project aims to comply with applicable open-source licenses and usage
+requirements. If you believe anything in this repository conflicts with
+licensing or branding rules, please open an issue or security report so it can
+be fixed quickly.
+
 ## Features
 
 | Feature | Official Plugin | This Plugin |
@@ -207,6 +227,12 @@ openclaw-mem0-v2/
 - [Mem0](https://mem0.ai) — Memory framework
 - [Official Mem0 OpenClaw Plugin](https://github.com/mem0ai/mem0/tree/main/openclaw) — Base implementation
 - [OpenClaw](https://openclaw.ai) — AI agent platform
+
+## Community
+
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [Contributing Guide](./CONTRIBUTING.md)
+- [Security Policy](./SECURITY.md)
 
 ## License
 
