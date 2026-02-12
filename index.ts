@@ -362,9 +362,8 @@ function normalizeAddResult(raw: any): AddResult {
       results: raw.results.map((r: any) => ({
         id: r.id ?? r.memory_id ?? "",
         memory: r.memory ?? r.text ?? "",
-        // Platform API may return PENDING status (async processing)
-        // OSS stores event in metadata.event
-        event: r.event ?? r.metadata?.event ?? (r.status === "PENDING" ? "ADD" : "ADD"),
+        // Prefer explicit event, then metadata.event, then default to "ADD"
+        event: r.event ?? r.metadata?.event ?? "ADD",
       })),
     };
   }
@@ -374,7 +373,7 @@ function normalizeAddResult(raw: any): AddResult {
       results: raw.map((r: any) => ({
         id: r.id ?? r.memory_id ?? "",
         memory: r.memory ?? r.text ?? "",
-        event: r.event ?? r.metadata?.event ?? (r.status === "PENDING" ? "ADD" : "ADD"),
+        event: r.event ?? r.metadata?.event ?? "ADD",
       })),
     };
   }
@@ -1539,6 +1538,12 @@ const memoryPlugin = {
 
               console.log("=== Mem0 Sleep Mode: Memory Maintenance ===\n");
 
+              // Validate date format if provided
+              if (opts.date && !/^\d{4}-\d{2}-\d{2}$/.test(opts.date)) {
+                console.error(`Invalid date format: "${opts.date}". Expected YYYY-MM-DD.`);
+                return;
+              }
+
               // Find unprocessed logs
               const unprocessed = opts.date
                 ? [{ date: opts.date, path: `${logDir}/${opts.date}.jsonl` }]
@@ -1635,6 +1640,8 @@ const memoryPlugin = {
                   }
                 } catch (err) {
                   console.error(`  Analysis failed: ${String(err)}`);
+                  console.error(`  Skipping ${log.date} — will retry on next run.`);
+                  continue;
                 }
 
                 markProcessed(logDir, log.date);
