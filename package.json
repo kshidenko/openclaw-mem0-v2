@@ -12,7 +12,7 @@
     "long-term-memory"
   ],
   "dependencies": {
-    "@sinclair/typebox": "0.34.47",
+    "@sinclair/typebox": "0.34.48",
     "mem0ai": "^2.2.1"
   },
   "openclaw": {
