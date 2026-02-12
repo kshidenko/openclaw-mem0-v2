@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
 import {
   cleanMessages,
   buildLogEntry,
@@ -379,9 +379,12 @@ describe("findUnprocessedLogs", () => {
     const logDir = join(TEST_DIR, "logs-find");
     mkdirSync(logDir, { recursive: true });
 
+    // Use a fixed date to avoid midnight boundary issues
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-02-10T12:00:00Z"));
+
     // Create some log files
-    const today = new Date().toISOString().split("T")[0];
-    writeFileSync(join(logDir, `${today}.jsonl`), "", "utf-8"); // today, should skip
+    writeFileSync(join(logDir, "2026-02-10.jsonl"), "", "utf-8"); // today, should skip
     writeFileSync(join(logDir, "2026-02-01.jsonl"), "", "utf-8");
     writeFileSync(join(logDir, "2026-02-02.jsonl"), "", "utf-8");
 
@@ -391,7 +394,9 @@ describe("findUnprocessedLogs", () => {
     const result = findUnprocessedLogs(logDir);
     expect(result.map((r) => r.date)).toContain("2026-02-02");
     expect(result.map((r) => r.date)).not.toContain("2026-02-01");
-    expect(result.map((r) => r.date)).not.toContain(today);
+    expect(result.map((r) => r.date)).not.toContain("2026-02-10");
+
+    vi.useRealTimers();
   });
 
   it("sorts results chronologically", () => {
