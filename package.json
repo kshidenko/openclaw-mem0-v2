@@ -15,7 +15,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@sinclair/typebox": "0.34.49",
+    "@sinclair/typebox": "0.34.52",
     "mem0ai": "^3.0.9"
   },
   "openclaw": {
